@@ -1,3 +1,7 @@
+" genrc.vim
+" default vim setup
+
+
 " sourcing
 " {
 source $VIMRUNTIME/defaults.vim
