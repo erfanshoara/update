@@ -6,3 +6,4 @@
 "set background=dark
 
 syntax enable
+set formatoptions=t
