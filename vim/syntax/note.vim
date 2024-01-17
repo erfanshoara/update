@@ -22,7 +22,7 @@ syntax region Note_String2 start='"' skip='\\\\\|\\"' end='"'
 syntax region Note_String3 start="`" skip="\\\\\|\\`" end="`"
 
 syntax match Note_ErrorSpc "^\s\{1,\}"
-syntax match Note_ErrorLen "^.\{80,\}$"
+syntax match Note_ErrorLen "\%>79v.\+"
 
 
 " applying the highlights

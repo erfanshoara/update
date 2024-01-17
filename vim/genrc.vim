@@ -49,7 +49,8 @@ noremap <C-s><C-x> :noh<Cr>
 "noremap <C-s><C-w> "+yiw:%s/\v(
 
 " <C-p> : putting and printing
-noremap <C-p><C-d> :r!date +"\# (\%b \%d, \%Y)"<Cr>
+noremap <C-p><C-d> "=strftime("%b %d, %Y")<CR>p
+inoremap <C-p><C-d> <C-R>=strftime("%b %d, %Y")<CR>
 
 " <C-x> : running, sourcing etc
 noremap <C-x><C-x> :execute "source " . $VIMRC<Cr>
@@ -72,7 +73,8 @@ hi Search ctermfg=0
 
 " filetype
 " {
-autocmd BufRead,BufNewFile *.note set filetype=note
+autocmd BufRead,BufNewFile *.note	set filetype=note
+autocmd BufRead,BufNewFile *.xxd	set filetype=xxd
 " }
 
 
@@ -111,7 +113,6 @@ cnoreabbrev W WriteDate
 "	endif
 "	return 1:match
 "endfunction
-
 " }
 
 
