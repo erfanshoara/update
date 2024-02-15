@@ -24,6 +24,7 @@ set splitright
 set hlsearch
 set wildmenu
 set wildmode=list:longest
+set noequalalways
 
 set completeopt=longest
 " }
@@ -39,7 +40,7 @@ noremap Y "+y
 " t : tab and window
 noremap th :term ++rows=10<CR>
 noremap tv :vert term ++rows=10<CR>
-noremap tr :vertical resize 84
+noremap tr :vertical resize 83
 
 " <C-f> : file stuff
 noremap <C-f><C-c> :execute "sp " . $VIMRC<CR>
