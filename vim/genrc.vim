@@ -40,7 +40,8 @@ noremap Y "+y
 " t : tab and window
 noremap th :term ++rows=10<CR>
 noremap tv :vert term ++rows=10<CR>
-noremap tr :vertical resize 83
+"noremap tr :vertical resize 83
+noremap tr :call Resize_WindowV()<CR>
 
 " <C-f> : file stuff
 noremap <C-f><C-c> :execute "sp " . $VIMRC<CR>
@@ -98,9 +99,15 @@ function! UpdateDateAndQuit()
     quit
 endfunction
 
-command! -nargs=0 WriteDate call UpdateDate()
-command! -nargs=0 Wq call UpdateDateAndQuit()
-cnoreabbrev W WriteDate
+
+" it resizes the vertical window size to 79 but only considers the length of
+" the text not the length from the line number and if the line number is off
+" it will not take that into account
+function! Resize_WindowV()
+	let len_numl = &number ? &numberwidth : 0
+	let len_winv = 79 + len_numl
+	execute 'vertical resize ' . len_winv
+endfunction
 
 "function! GetMatch(pattern)
 "	get matched = search(a:pattern)
@@ -114,6 +121,12 @@ cnoreabbrev W WriteDate
 "	endif
 "	return 1:match
 "endfunction
+
+
+command! -nargs=0 WriteDate call UpdateDate()
+command! -nargs=0 Wq call UpdateDateAndQuit()
+cnoreabbrev W WriteDate
+
 " }
 
 
