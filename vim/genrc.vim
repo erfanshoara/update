@@ -63,7 +63,7 @@ noremap <C-e><C-l> :%s/^{$\n$/{/g<Cr>:%s/^$\n}$/}/g<Cr>
 noremap <C-e><C-t> :%g/^{$/normal! V%><Cr>:%s/^\(\t*\)\t\([{}]\)$/\1\2/g<Cr>:noh<Cr>
 " } -> this is annoying :(((((
 noremap <C-e><C-s> :%s/^[ \t]*//<Cr>:noh<Cr>
-noremap <C-e><C-w> :%s/\<<C-r><C-w>\>//cg<Left><Left><Left>
+noremap <C-e><C-w> :%s/\(\<<C-r><C-w>\>\)//cg<Left><Left><Left>
 " }
 
 
@@ -88,13 +88,13 @@ command Getfp execute "!echo $(pwd)/$(ls %) | xclip -sel clip"
 
 " func
 " {
-function! UpdateDate()
+function UpdateDate()
     let l:date = strftime('%b %d, %Y')
     execute '%s/\(\w\{3\} \d\{2\}, \)\d\{4\}/' . l:date . '/gc'
     write
 endfunction
 
-function! UpdateDateAndQuit()
+function UpdateDateAndQuit()
     call UpdateDate()
     quit
 endfunction
@@ -103,7 +103,7 @@ endfunction
 " it resizes the vertical window size to 79 but only considers the length of
 " the text not the length from the line number and if the line number is off
 " it will not take that into account
-function! Resize_WindowV()
+function Resize_WindowV()
 	let len_numl = &number ? &numberwidth : 0
 	let len_winv = 79 + len_numl
 	execute 'vertical resize ' . len_winv
@@ -122,6 +122,9 @@ endfunction
 "	return 1:match
 "endfunction
 
+function Replace_Word()
+	let word = expand('<cword>')
+endfunction
 
 command! -nargs=0 WriteDate call UpdateDate()
 command! -nargs=0 Wq call UpdateDateAndQuit()
