@@ -1,8 +1,7 @@
-" syntax/note.vim
-" Vim syntax file
-" Language:		note files
-" Maintainer:	erfan@shoara.net
-" Last Change:	Jan 12, 2024
+" File:         syntax/note.vim
+" Info:         Vim syntax file
+" Language:     note files
+" Maintainer:   erfan@shoara.net
 
 
 "

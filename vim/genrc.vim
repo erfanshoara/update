@@ -27,6 +27,9 @@ set wildmode=list:longest
 set noequalalways
 
 set completeopt=longest
+
+set laststatus=2
+set statusline=(%n)\ %f\ %y\ %c%V(%l/%L)\ %P
 " }
 
 
@@ -35,7 +38,8 @@ set completeopt=longest
 " general
 map B F_
 map W f_
-noremap Y "+y
+noremap <C-y> "+y
+noremap <C-p> "+p
 
 " t : tab and window
 noremap th :term ++rows=10<CR>
@@ -77,6 +81,7 @@ hi Search ctermfg=0
 " {
 autocmd BufRead,BufNewFile *.note	set filetype=note
 autocmd BufRead,BufNewFile *.xxd	set filetype=xxd
+autocmd BufRead,BufNewFile *.c,*.h	call ExtendCSyntax()
 " }
 
 
@@ -124,6 +129,12 @@ endfunction
 
 function Replace_Word()
 	let word = expand('<cword>')
+endfunction
+
+function ExtendCSyntax()
+	syntax match cType "\<\w\+_t\>"
+	syntax match cConstant "\<__[A-Z0-9_]\+__\>"
+	syntax keyword	cTodo		contained TODO FIXME XXX NOTE
 endfunction
 
 command! -nargs=0 WriteDate call UpdateDate()
