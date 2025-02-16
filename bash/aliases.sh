@@ -11,6 +11,7 @@ alias ta='tre -a'
 alias tp='tre -a --prune'
 alias td='tre -d'
 alias tad='tree -Cad'
+alias tg='tre --gitignore'
 
 # vim
 alias v='vim'
